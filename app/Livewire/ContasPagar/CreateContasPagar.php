@@ -179,6 +179,7 @@ class CreateContasPagar extends Component
     {
         // Busca ultimo lançamento
         $current = ContasPagar::max('num_transent');
+
         $num_transent = ($current + 1);
 
         //Busca o usuario autenticado.
@@ -195,7 +196,7 @@ class CreateContasPagar extends Component
 
             ContasPagar::create([
                 'id_user' => $user_auth,
-                'descricao' => $this->descricao . " - ($i)",
+                'descricao' => $this->descricao . " | Prest. ($i)",
                 'id_fornec' => $this->id_fornec,
                 'valor' => $valor_parcela,
                 'valor_total' => $this->valor,
@@ -241,7 +242,7 @@ class CreateContasPagar extends Component
 
             ContasPagar::create([
                 'id_user' => $user_auth,
-                'descricao' => $this->descricao . " - ($i)",
+                'descricao' => $this->descricao . " | Prest. ($i)",
                 'id_fornec' => $this->id_fornec,
                 'valor' => $valor_parcela,
                 'valor_total' => $this->valor,

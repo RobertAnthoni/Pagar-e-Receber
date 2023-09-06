@@ -14,7 +14,7 @@
                         <div>
                             <p>Saldo em Caixa</p>
                             <h2 class="text-4xl font-bold text-gray-600">R$ {{ $saldo }}</h2>
-                            <p class="text-xs text-red-600">Dívida corrente do mês: R$ {{$prevpagar}}</p>
+                            <p class="text-xs text-red-600">Dívida corrente do mês: R$ {{ $prevpagar }}</p>
                         </div>
                         <img src="https://www.emprenderconactitud.com/img/Wallet.png" alt="wallet"
                             class="h-24 md:h-20 w-38">
@@ -53,7 +53,7 @@
                         @endif
                         <i class="fas fa-exchange-alt text-white text-4xl"></i>
                         <p class="text-white">Balanço </p>
-                        <p class="text-white">R$ {{ $receber_aberto + $saldo - $pagar_aberto }}</p>
+                        <p class="text-white">R$ <?php echo $balanco = number_format($balanco, 2, ',', ' '); ?></p>
                     </div>
                 </div>
             </div>

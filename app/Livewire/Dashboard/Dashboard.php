@@ -17,6 +17,7 @@ class Dashboard extends Component
     public $pagar_aberto;
     public $receber_aberto;
     public $now;
+    public $balanco;
 
     public function mount()
     {
@@ -34,6 +35,8 @@ class Dashboard extends Component
         //Valores a receber em aberto.
         $receber_aberto = ContasReceber::where('status', 'A')->where('id_user', $user_auth)->sum('valor');
         $this->receber_aberto = $receber_aberto;
+
+        $this->balanco = (($receber_aberto + $this->saldo) - $pagar_aberto);
     }
 
     public function render()

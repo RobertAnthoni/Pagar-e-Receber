@@ -179,7 +179,7 @@ class CreateContasReceber extends Component
 
             ContasReceber::create([
                 'id_user' => $user_auth,
-                'descricao' => $this->descricao . " - ($i)",
+                'descricao' => $this->descricao . " | Prest. ($i)",
                 'id_client' => $this->id_client,
                 'valor' => $valor_parcela,
                 'valor_total' => $this->valor,
@@ -225,7 +225,7 @@ class CreateContasReceber extends Component
 
             ContasReceber::create([
                 'id_user' => $user_auth,
-                'descricao' => $this->descricao . " - ($i)",
+                'descricao' => $this->descricao . " | Prest. ($i)",
                 'id_client' => $this->id_client,
                 'valor' => $valor_parcela,
                 'valor_total' => $this->valor,
