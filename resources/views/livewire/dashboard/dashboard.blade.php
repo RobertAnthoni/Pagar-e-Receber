@@ -14,7 +14,7 @@
                         <div>
                             <p>Saldo em Caixa</p>
                             <h2 class="text-4xl font-bold text-gray-600">R$ {{ $saldo }}</h2>
-                            <p class="text-xs text-red-600">Dívida corrente do mês: R$ {{ $prevpagar }}</p>
+                            <p class="text-xs text-red-600">Dívida corrente do mês: R$ {{ $pag_mes }}</p>
                         </div>
                         <img src="https://www.emprenderconactitud.com/img/Wallet.png" alt="wallet"
                             class="h-24 md:h-20 w-38">
@@ -87,13 +87,7 @@
                                 <tr class="hover:bg-grey-lighter">
                                     <td class="py-2 px-4 border-b border-grey-light">{{ $lan->descricao }}</td>
                                     <td class="py-2 px-4 text-center border-b border-grey-light">
-                                        @if ($lan->dt_vencimento < $now)
-                                            <p class="text-red-500">
-                                                <?php echo date_format($data = date_create($lan->dt_vencimento), 'd-m-Y'); ?>
-                                            </p>
-                                        @else
-                                            <?php echo date_format($data = date_create($lan->dt_vencimento), 'd-m-Y'); ?>
-                                        @endif
+                                        <?php echo date_format($data = date_create($lan->dt_vencimento), 'd-m-Y'); ?>
                                     </td>
                                     <td class="py-2 px-4 border-b border-grey-light text-right">R$
                                         {{ $lan->valor }}</td>

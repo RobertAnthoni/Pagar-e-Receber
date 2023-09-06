@@ -56,6 +56,13 @@ class Dashboard extends Component
             ->orWhere('dt_vencimento', '<', $this->now)
             ->get();
 
+        $pag_mes = PrevCaixa::whereMonth('dt_vencimento', $currentMonth)
+            ->whereYear('dt_vencimento', $currentYear)
+            ->where('type', 'CP')
+            ->where('id_user', $user_auth)
+            ->where('conciliado', 0)
+            ->sum('valor');
+
         // Monta o grafico de previsão de caixa.
         $prevpagar = PrevCaixa::whereMonth('dt_vencimento', $currentMonth)
             ->whereYear('dt_vencimento', $currentYear)
@@ -69,6 +76,6 @@ class Dashboard extends Component
             ->where('id_user', $user_auth)
             ->sum('valor');
 
-        return view('livewire.dashboard.dashboard', compact('prevpagar', 'prevreceber', 'pag_prox'));
+        return view('livewire.dashboard.dashboard', compact('prevpagar', 'prevreceber', 'pag_prox', 'pag_mes'));
     }
 }
