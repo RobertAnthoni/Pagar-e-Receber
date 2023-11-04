@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('caixas', function (Blueprint $table) {
             $table->id();
             $table->integer('id_user');
+            $table->string('descricao', 150);
             $table->decimal('saldo');
             $table->timestamps();
         });

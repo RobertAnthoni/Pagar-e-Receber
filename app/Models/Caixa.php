@@ -10,6 +10,7 @@ class Caixa extends Model
     use HasFactory;
 
     protected $fillable = [
+        'descricao',
         'saldo',
         'id_user',
     ];

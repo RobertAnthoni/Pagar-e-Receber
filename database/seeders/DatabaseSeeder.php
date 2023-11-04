@@ -22,6 +22,25 @@ class DatabaseSeeder extends Seeder
         ]);
 
         \App\Models\Caixa::factory()->create([
+            'descricao' => 'Itau - C. Salario',
+            'saldo' => 0,
+            'id_user' => 1,
+        ]);
+
+        \App\Models\Caixa::factory()->create([
+            'descricao' => 'Sicoob - Corrente',
+            'saldo' => 0,
+            'id_user' => 1,
+        ]);
+
+        \App\Models\Caixa::factory()->create([
+            'descricao' => 'Sicoob - Poupança',
+            'saldo' => 0,
+            'id_user' => 1,
+        ]);
+
+        \App\Models\Caixa::factory()->create([
+            'descricao' => 'Rico - Investimento',
             'saldo' => 0,
             'id_user' => 1,
         ]);

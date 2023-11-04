@@ -25,8 +25,8 @@ class Dashboard extends Component
         $user_auth = Auth::user()->id;
 
         //Busca caixa
-        $caixa = Caixa::where('id_user', $user_auth)->first();
-        $this->saldo = $caixa->saldo;
+        $caixa = Caixa::where('id_user', $user_auth)->sum('saldo');
+        $this->saldo = $caixa;
 
         //Valores a pagar em aberto.
         $pagar_aberto = ContasPagar::where('status', 'A')->where('id_user', $user_auth)->sum('valor');
@@ -54,6 +54,7 @@ class Dashboard extends Component
             ->whereYear('dt_vencimento', $currentYear)
             ->where('status', 'A')->where('id_user', $user_auth)->orderBy('dt_vencimento')->limit(10)
             ->orWhere('dt_vencimento', '<', $this->now)
+            ->where('status', 'A')->where('id_user', $user_auth)->orderBy('dt_vencimento')->limit(10)
             ->get();
 
         $pag_mes = PrevCaixa::whereMonth('dt_vencimento', $currentMonth)
@@ -68,7 +69,7 @@ class Dashboard extends Component
             ->whereYear('dt_vencimento', $currentYear)
             ->where('type', 'CP')
             ->where('id_user', $user_auth)
-            ->sum('valor');
+            ->sum('valor');     
 
         $prevreceber = PrevCaixa::whereMonth('dt_vencimento', $currentMonth)
             ->whereYear('dt_vencimento', $currentYear)
